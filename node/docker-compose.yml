@@ -1,0 +1,19 @@
+version: "3"
+services:
+  node:
+    container_name: node_dev_vscode
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "4200:4200"
+    environment:
+      - NODE_OPTIONS=--max_old_space_size=4096
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - CHROME_BIN=/usr/bin/google-chrome
+    volumes:
+      - ${PROJECT_PATH}:/home/node/app
+      - ./init.sh:/tmp/init.sh
+    working_dir: /home/node/app
+    tty: true
+    command: "bash /tmp/init.sh"

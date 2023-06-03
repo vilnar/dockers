@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx_dev_web:
+    image: nginx:latest
+    container_name: nginx_dev_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./examples/:/var/www/app
+      - ./app.conf:/etc/nginx/conf.d/app.conf
+    working_dir: /var/www/app
+
+  php_dev_web:
+    container_name: php_dev_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./examples/:/var/www/app
+    working_dir: /var/www/app

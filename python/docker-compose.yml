@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+  python_dev:
+    hostname: python_dev
+    container_name: python_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./examples/:/home/buzz/examples/
+      - ./init.sh:/tmp/init.sh
+    tty: true
+    command: "bash /tmp/init.sh"
