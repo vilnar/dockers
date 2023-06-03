@@ -3,19 +3,13 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
     wget \
-    gdb \
     vim \
-    ca-certificates \
-    bison \
+    lsb-release \
     build-essential \
     libssl-dev \
-    ninja-build \
-    lsb-release \
-    software-properties-common \
-    libbluetooth-dev \
-    tk-dev \
-    uuid-dev \
     liblzma-dev \
+    zlib1g-dev \
+    libexpat1-dev \
     libffi-dev \
     sudo
 
@@ -23,7 +17,7 @@ ENV DISTR bullseye
 
 
 # ==================================================================
-# bullseye_python
+# python
 # ==================================================================
 
 # ensure local python is preferred over distribution python
